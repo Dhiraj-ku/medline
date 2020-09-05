@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="col-md-12">
+       <h3>Medline.com</h3> 
+       <h2>Account Registration</h2>
+    </div>
+    <div class="col-md-12">
+        <h4>User Registration</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="col-md-6">
+            <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName" 
+                  [ngClass]="{'is-invalid': submitted && f.firstName.errors}"  >
+                  <div *ngIf="submitted && f.firstName.errors" class="error">
+                      <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName"
+                [ngClass]="{'is-invalid': submitted && f.lastName.errors}"  >
+                  <div *ngIf="submitted && f.lastName.errors" class="error">
+                      <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                  <label for="phone">Phone Number *</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="Phone Number" formControlName="phone"
+                  [ngClass]="{'is-invalid': submitted && f.phone.errors}"  >
+                  <div *ngIf="submitted && f.phone.errors" class="error">
+                      <div *ngIf="f.phone.errors.required">Phone Number is required</div>
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="ext">Ext</label>
+                <input type="text" class="form-control" id="ext" placeholder="Extension" formControlName="ext">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+        <div class="form-group">
+            <label for="Email">Email address *</label>
+            <input type="email" class="form-control" id="Email" placeholder="Email" formControlName="Email"
+            [ngClass]="{'is-invalid': submitted && f.Email.errors}"  >
+                  <div *ngIf="submitted && f.Email.errors" class="error">
+                      <div *ngIf="f.Email.errors.required">Email is required</div>
+                  </div>
+            
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+        <button class="btn btn-success btn-lg col-sm-4" (click)="show()">Next</button>
+        </div>
+    </form>
+    </div>
+    </div>
+ </div>
+
+
+<!--Pop up on confirmation-->
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Register</h4>
+        </div>
+        <div class="modal-body">
+                  <p>User Name : {{ this.registrationForm.controls['firstName'].value}}{{ this.registrationForm.controls['lastName'].value}}</p>
+                  <p>Phone: {{this.registrationForm.controls['ext'].value}} {{this.registrationForm.controls['phone'].value}}</p>
+                  <p>Email: {{this.registrationForm.controls['Email'].value}}</p>
+       
+      
+   </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dark" (click) = "next()">Close</button>
+        
+        </div>
+      </div>
+    </div>
+    </div>
+  
